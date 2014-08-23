@@ -23,9 +23,9 @@
 
 ## Screenshots
 
-![Screenshot 1](http://imgur.com/tVhxD6E)
+![Screenshot 1](http://i.imgur.com/tVhxD6E.jpg)
 
-![Screenshot 2](http://imgur.com/izcXC6a)
+![Screenshot 2](http://i.imgur.com/izcXC6a.jpg)
 
 
 ## Usage
