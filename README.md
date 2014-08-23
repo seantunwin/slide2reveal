@@ -1,4 +1,4 @@
-# Scroll2Reveal
+# Slide2Reveal
 <!-- If you'd like to use a logo instead uncomment this code and remove the text above this line
 
   ![Logo](URL to logo img file goes here)
@@ -7,10 +7,10 @@
 
 
 
-![Scroll2Reveal](https://seantunwin.github.io/scroll2reveal)
+![Slide2Reveal](https://seantunwin.github.io/scroll2reveal)
 
 ## Description
-**Scroll2Reveal** A UI Component for revealing an image using a slider with a custom tooltip.
+**Slide2Reveal** A UI Component for revealing an image using a slider with a custom tooltip.
 
 ## Installation
 
