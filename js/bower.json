@@ -1,0 +1,27 @@
+{
+  "name": "slide2reveal",
+  "version": "1.0.0",
+  "homepage": "https://github.com/seantunwin/slide2reveal",
+  "authors": [
+    "seantunwin <sean.t.unwin@gmail.com>"
+  ],
+  "description": "Component to reveal an image using a slider which includes a tooltip",
+  "main": "slide2reveal.js"
+  ],
+  "keywords": [
+    "ui",
+    "component",
+    "slider",
+    "tooltip",
+    "reveal",
+    "image"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
