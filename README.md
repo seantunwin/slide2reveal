@@ -1,16 +1,16 @@
 # Slide2Reveal
-<!-- If you'd like to use a logo instead uncomment this code and remove the text above this line
 
-  ![Logo](URL to logo img file goes here)
-
--->
-
-
-
-![Slide2Reveal](https://seantunwin.github.io/scroll2reveal)
 
 ## Description
-**Slide2Reveal** A UI Component for revealing an image using a slider with a custom tooltip.
+**Slide2Reveal**
+A UI Component for revealing an image using a slider with a custom tooltip.
+
+This experiment was born from a desire to show an original image and then the edited version, which I had done in Photshop, by using a slider to gradually show the difference between the two.
+Following that initial experimentation I thought it would be neat to have a tooltip showing the amount of progress which the slider had been moved.
+This is the result of that experimentation.
+
+*Note: This is not fully cross-browser compatible although it appears to be passable in Firefox and Webkit browsers.*
+
 
 ## Installation
 
@@ -18,7 +18,7 @@
 * Place `slide2reveal.min.css` into your `/css` directory or add the contents into your own CSS.
 * Reference the files in your HTML.
 * Use the template section found in `index.html` as a guide or paste it into your HTML.
-* Update the `<img>` tags in the template to your own images.
+* Update the `<img>` tags in the template with your own images.
 
 
 ## Screenshots
@@ -77,12 +77,14 @@ var slide2reveal = new Slide2Reveal(s2r, 0);
     <section class="slide2reveal">
         <img class="s2r-stack" src="img/002.jpg"  width="600" height="338" alt="after">
         <img class="s2r-stack" src="img/001.jpg" width="600" height="338" alt="before">
-        <div class="s2r-controls" role="controls">
-            <label class="s2r-controls-label" for="s2r-controls" name="s2r-controls-label">Slide to Reveal</label>
-            <!-- Using a label because IE does not support <output> -->
-            <label class="s2r-tooltip" for="s2r-slider" name="s2r-slider-label">0%</label>
-            <input class="s2r-slider" type="range" min="0" max="100" value="0" step="1" role="slider" aria-labelledby="s2r-slider-label" aria-valuemin="0" aria-valuemax="100" aria-live="polite" />
-        </div><!-- End .s2r-controls -->
+        <form name="s2r-controls" class="s2r-controls">
+            <fieldset>
+                <h4 class="s2r-controls-label">Slide to Reveal</h4>
+                <!-- Using a label because IE does not support <output> -->
+                <output id="s2r-slider-label" class="s2r-tooltip" for="s2r-slider">0%</output>
+                <input id="s2r-slider" class="s2r-slider" type="range" min="0" max="100" value="0" step="1" role="slider" aria-labelledby="s2r-slider-label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0" aria-live="polite" />
+            </fieldset>
+        </form><!-- End .s2r-controls -->
     </section> <!-- End .slide2reveal -->
     <!-- *********************** END TEMPLATE: Slide2Reveal *************************** -->
 

@@ -268,34 +268,42 @@
     transition : box-shadow 1s;
 }
 
+
+.s2r-controls fieldset {
+    /* hide the border */
+    border: 0px solid transparent;
+}
+
 /**
  ***** Slider2Reveal::Controls Label *****
  **/
-label[name='s2r-controls-label'] {
-    display: block;
-    margin: 0;
+.s2r-controls-label {
+    margin: 0 auto;
     padding: 0;
+    border: 0px solid transparent;
     /* center the controls label's text */
     text-align: center;
+    /* remove bolding of heading */
+    font-weight: 200;
 }
 
-label[name='s2r-controls-label'],
-label[name='s2r-controls-label']:before,
-label[name='s2r-controls-label']:after {
+.s2r-controls-label,
+.s2r-controls-label:before,
+.s2r-controls-label:after {
     color: rgba(5, 5, 5, 0.35);
     text-shadow: 0.04em 0.04em 0 rgba(135, 135, 135, 0.25);
 }
 
-label[name='s2r-controls-label']:before {
+.s2r-controls-label:before {
     margin-right: 0.3em;
 }
 
-label[name='s2r-controls-label']:after {
+.s2r-controls-label:after {
     margin-left: 0.2em;
 }
 
-label[name='s2r-controls-label']:before,
-label[name='s2r-controls-label']:after {
+.s2r-controls-label:before,
+.s2r-controls-label:after {
     content: '||';
 }
 /* ----------------- End Slider2Reveal -----------------*/
