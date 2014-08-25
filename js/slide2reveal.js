@@ -15,15 +15,18 @@
 *        - 0 will not show a percentage symbol in the tooltip
 *
 ************** HTML Template **************
-<section id="slide2reveal">
-    <image class="s2r-stack" src="img/002.jpg"  width="600" height="338" alt="after">
-    <image class="s2r-stack" src="img/001.jpg" width="600" height="338" alt="before">
-    <div class="s2r-controls" role="controls">
-        <label for="s2r-slider" name="s2r-slider-label">Slide to Reveal</label>
-        <input class="s2r-slider" type="range" min="0" max="100" value="0" step="1" role="slider" aria-labelledby="s2r-slider-label" aria-valuemin="0" aria-valuemax="100" aria-live="polite">
-        <span class="s2r-tooltip">#</span>
-    </div> <!-- End .s2r-controls -->
-</secton> <!-- End #slide2reveal -->
+<section class="slide2reveal">
+        <img class="s2r-stack" src="img/002.jpg"  width="600" height="338" alt="after">
+        <img class="s2r-stack" src="img/001.jpg" width="600" height="338" alt="before">
+        <form name="s2r-controls" class="s2r-controls">
+            <fieldset>
+                <h4 class="s2r-controls-label">Slide to Reveal</h4>
+                <!-- Using a label because IE does not support <output> -->
+                <output id="s2r-slider-label" class="s2r-tooltip" for="s2r-slider">0%</output>
+                <input id="s2r-slider" class="s2r-slider" type="range" min="0" max="100" value="0" step="1" role="slider" aria-labelledby="s2r-slider-label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0" aria-live="polite" />
+            </fieldset>
+        </form><!-- End .s2r-controls -->
+    </section> <!-- End .slide2reveal -->
 **********************************************
 *
 *
@@ -47,8 +50,8 @@
         'tooltip': {}
       },
       container = element,
-      suffix = showPercent,
-      args = arguments;
+      suffix = showPercent;
+      // args = arguments;
 
 
 
@@ -165,7 +168,6 @@
       function configTooltip() {
         // Link HTML label to our tooltip object
         s2r.tooltip = s2r.base.querySelector('.s2r-tooltip');
-
         s2r.tooltip.pos = getRect(s2r.tooltip);
         s2r.tooltip.startx = s2r.slider.pos.left - s2r.tooltip.pos.left;
       }
@@ -212,13 +214,22 @@
       tooltip.innerHTML = message;
     } /* End updateTooltipMessage */
 
+    function updateAriaValues(slider, value) {
+      // Add '%' to string
+      var newvalue = value.toString + '%';
+      // Set aria-valuenow and aria-valuetext attributes' value
+      slider.setAttribute('aria-valuenow', slider.value);
+      slider.setAttribute('aria-valuetext', newvalue);
+    } /* End updateAriaValueNow */
+
     /**
      * Slider is moving. Get to work.
      **/
     function doAction() {
-
       // Move the clip on drag to reveal s2r.image
       reveal(s2r.slider.valueAsPercent());
+      // Update the aria-valuenow attribute
+      updateAriaValues(s2r.slider, s2r.slider.valueAsPercent());
       // Move tooltip to shadow the range input's position
       moveTooltip();
       // Keep tooltip text updated with current value
@@ -276,11 +287,11 @@
       var sval = s2r.slider.value, // current slider value
         ppos = s2r.slider.parentElement.getBoundingClientRect(),
         spos = s2r.slider.getBoundingClientRect(),
-        swidth = parseInt(s2r.slider.offsetWidth),
+        swidth = parseInt(s2r.slider.clientWidth),
         sleft = spos.left,
-        twidth = s2r.tooltip.offsetWidth,
+        twidth = s2r.tooltip.clientWidth,
         pleft = ppos.left,
-        startpos = Math.floor(sleft - pleft),
+        startpos = Math.floor(spos.left - ppos.left),
         endpos = startpos + (swidth - twidth),
         val = s2r.slider.valueAsPercent(),
         fsize = parseFloat(document.defaultView.getComputedStyle(s2r.tooltip, null).fontSize),
@@ -288,7 +299,15 @@
         em = lineheight / fsize,
         charcount = s2r.tooltip.innerHTML.length,
         strlen = charcount * em,
-        result = (pctValue((twidth / 4), val) / 4),
+        // result2 = ((sval - s2r.slider.attr.min) / (s2r.slider.attr.len)) * swidth + sleft - (endpos / 1.75),
+        // result2 = ((sval - s2r.slider.attr.min) / (s2r.slider.attr.len)) * (swidth + (twidth - (twidth +(twidth / charcount)))),
+        result2 = ((sval - s2r.slider.attr.min) / (s2r.slider.attr.len)) * (endpos + (twidth)),
+        result3 = pctValue((twidth), val),
+        result5 = pctValue( (twidth), (100 - val)),
+        // xpos = result2 + (((twidth - result3) / charcount)) - result3,
+        xpos = result2 + ((twidth / charcount)) - (result3 * (strlen / 2)),
+        // xpos = Math.round(result2 + (twidth / ((charcount + 1) - charcount))  - (result3 / charcount)),
+        // xpos = result2 + ((twidth) / charcount) - ((twidth) + result3) - ((twidth / 2) / 2),
         subtotal = 0,
         total = 0;
 
@@ -298,7 +317,8 @@
         if (sval === s2r.slider.attr.max) {
           subtotal = endpos;
         } else {
-          subtotal = pctValue((endpos - ((twidth) / (charcount + 1))), val) + (Math.sqrt(Math.pow(((twidth / strlen) / charcount), 2))) + ((twidth / em) / (charcount)) + result;
+          subtotal = xpos;
+          // subtotal = pctValue((endpos - ((twidth) / (charcount + 1))), val) + (Math.sqrt(Math.pow(((twidth / strlen) / charcount), 2))) + ((twidth / em) / (charcount)) + result;
           if (subtotal < startpos) subtotal = startpos;
           if (subtotal > endpos) subtotal = endpos;
         }
