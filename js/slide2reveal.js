@@ -154,13 +154,10 @@
         };
         // Create a function to return current slider's value as a percentage
         s2r.slider.valueAsPercent = function() {
-          return Math.floor(((s2r.slider.value - s2r.slider.attr.min) / (s2r.slider.attr.max - s2r.slider.attr.min)) * 100);
+          return Math.floor(((s2r.slider.value - s2r.slider.attr.min) / (s2r.slider.attr.len)) * 100);
         }
       }
 
-      function getRect(obj) {
-          return obj.getBoundingClientRect();
-        }
         /**
          * Set Tooltip Params
          **/
@@ -185,6 +182,10 @@
       setup();
 
     } /* End config */
+
+    function getRect(obj) {
+        return obj.getBoundingClientRect();
+    }
 
     /**
      * Terminate the instance
@@ -284,42 +285,37 @@
      **/
     function moveTooltip() {
 
-      var sval = s2r.slider.value, // current slider value
-        ppos = s2r.slider.parentElement.getBoundingClientRect(),
-        spos = s2r.slider.getBoundingClientRect(),
-        swidth = parseInt(s2r.slider.clientWidth),
-        sleft = spos.left,
-        twidth = s2r.tooltip.clientWidth,
-        pleft = ppos.left,
-        startpos = Math.floor(spos.left - ppos.left),
-        endpos = startpos + (swidth - twidth),
-        val = s2r.slider.valueAsPercent(),
-        fsize = parseFloat(document.defaultView.getComputedStyle(s2r.tooltip, null).fontSize),
-        lineheight = parseFloat(document.defaultView.getComputedStyle(s2r.tooltip, null).lineHeight),
-        em = lineheight / fsize,
-        charcount = s2r.tooltip.innerHTML.length,
-        strlen = charcount * em,
-        // result2 = ((sval - s2r.slider.attr.min) / (s2r.slider.attr.len)) * swidth + sleft - (endpos / 1.75),
-        // result2 = ((sval - s2r.slider.attr.min) / (s2r.slider.attr.len)) * (swidth + (twidth - (twidth +(twidth / charcount)))),
-        result2 = ((sval - s2r.slider.attr.min) / (s2r.slider.attr.len)) * (endpos + (twidth)),
-        result3 = pctValue((twidth), val),
-        result5 = pctValue( (twidth), (100 - val)),
-        // xpos = result2 + (((twidth - result3) / charcount)) - result3,
-        xpos = result2 + ((twidth / charcount)) - (result3 * (strlen / 2)),
-        // xpos = Math.round(result2 + (twidth / ((charcount + 1) - charcount))  - (result3 / charcount)),
-        // xpos = result2 + ((twidth) / charcount) - ((twidth) + result3) - ((twidth / 2) / 2),
-        subtotal = 0,
-        total = 0;
+      var sval = s2r.slider.value,
+            ppos = getRect(s2r.base),
+            spos = getRect(s2r.slider),
+            swidth = parseInt(s2r.slider.offsetWidth),
+            twidth = s2r.tooltip.offsetWidth,
+            pleft = Math.round(ppos.left),
+            sleft = Math.round(spos.left),
+            startpos = Math.floor(spos.left - ppos.left),
+            endpos = startpos + (swidth - twidth),
+            val = s2r.slider.valueAsPercent(),
+            charcount = s2r.tooltip.innerHTML.length,
+            result3 = pctValue((twidth), val),
+            result6 = Math.round(((sval - s2r.slider.attr.min) / (s2r.slider.attr.len)) * swidth),
+            result7 = Math.round((result3 / twidth) * 100),
+            xpos = result6,
+            subtotal = 0,
+            total = 0;
 
+      //  When slider is at minimum value set tooltip's position value
       if (sval === s2r.slider.attr.min) {
         subtotal = startpos;
       } else {
+        //  When slider is at maximum value set tooltip's position value
         if (sval === s2r.slider.attr.max) {
           subtotal = endpos;
+        // Calculate tooltip position where it should be when slider value is not at min or max
         } else {
-          subtotal = xpos;
-          // subtotal = pctValue((endpos - ((twidth) / (charcount + 1))), val) + (Math.sqrt(Math.pow(((twidth / strlen) / charcount), 2))) + ((twidth / em) / (charcount)) + result;
+          subtotal = startpos + xpos - ((twidth / 5)) - ((result7 / 5)) - (charcount / 2);
+          // Keep tooltip stationary when tooltip position is less than start position
           if (subtotal < startpos) subtotal = startpos;
+          // Keep tooltip stationary when tooltip position is greater than end position
           if (subtotal > endpos) subtotal = endpos;
         }
       }
