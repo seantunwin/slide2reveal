@@ -5,11 +5,12 @@
 **Slide2Reveal**
 A UI Component for revealing an image using a slider with a custom tooltip.
 
-This experiment was born from a desire to show an original image and then the edited version, which I had done in Photshop, by using a slider to gradually show the difference between the two.
+
+This experiment was born from a desire to show an original image and then the edited version, which I had done in Photoshop, by using a slider to gradually show the difference between the two.
 Following that initial experimentation I thought it would be neat to have a tooltip showing the amount of progress which the slider had been moved.
 This is the result of that experimentation.
 
-*Note: This is not fully cross-browser compatible although it appears to be passable in Firefox and Webkit browsers.*
+*Note: This is not fully cross-browser compatible although it performs nicely in Firefox and Chrome browsers.*
 
 
 ## Installation
