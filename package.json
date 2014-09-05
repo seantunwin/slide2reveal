@@ -1,0 +1,26 @@
+{
+  "name": "Slide2Reveal",
+  "version": "0.1.0",
+  "description": "A UI Component for revealing an image using a slider with a custom",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/seantunwin/slide2reveal.git"
+  },
+  "keywords": [
+    "slide2reveal",
+    "ui",
+    "component",
+    "slider",
+    "image",
+    "tooltip"
+  ],
+  "author": "Sean T. Unwin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/seantunwin/slide2reveal/issues"
+  }
+}

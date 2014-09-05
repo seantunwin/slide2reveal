@@ -3,7 +3,7 @@
 *
 * @author: Sean T. Unwin
 * @contact: <sean DOT t DOT unwin AT gmail DOT com> <https://twitter.com/seantunwin>
-* @url: https://github.com/seantunwin/slide2reveal.js
+* @url: https://github.com/seantunwin/slide2reveal
 *
 **** USAGE ***
 * var myVar = Slide2Reveal(element, [showPercent]);
@@ -21,7 +21,6 @@
         <form name="s2r-controls" class="s2r-controls">
             <fieldset>
                 <h4 class="s2r-controls-label">Slide to Reveal</h4>
-                <!-- Using a label because IE does not support <output> -->
                 <output id="s2r-slider-label" class="s2r-tooltip" for="s2r-slider">0%</output>
                 <input id="s2r-slider" class="s2r-slider" type="range" min="0" max="100" value="0" step="1" role="slider" aria-labelledby="s2r-slider-label" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="0" aria-live="polite" />
             </fieldset>

@@ -1,0 +1,8 @@
+node_modules
+.DS_STORE
+Thumbs.db
+assets
+_server
+.csscomb
+js/vendor
+js/_backups
