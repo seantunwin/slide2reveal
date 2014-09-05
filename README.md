@@ -17,7 +17,7 @@ This is the result of that experimentation.
 
 * Place `slide2reveal.min.js` into your `/js` directory.
 * Place `slide2reveal.min.css` into your `/css` directory or add the contents into your own CSS.
-* Reference the files in your HTML. See [Configuration](#Configuration).
+* Reference the files in your HTML. See [Configuration](#configuration).
 * Use the template section found in `index.html` as a guide or paste it into your HTML.
 * Update the `<img>` tags in the template with your own images.
 
