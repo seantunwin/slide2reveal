@@ -35,33 +35,37 @@ This is the result of that experimentation.
 
 In the head of your HTML include the CSS file:
 
-```HTML
+```html
 
-<link  href="css/slide2reveal.css" rel="stylesheet">
+<link  href="css/slide2reveal.min.css" rel="stylesheet">
 
 ```
 
 At the bottom of your HTML include the JavaScript files:
 
-```HTML
+```html
 
-<script src="js/slide2reveal.js" type="text/javascript"></script>
+<script src="js/slide2reveal.min.js" type="text/javascript"></script>
 <script src="js/app.js" type="text/javascript"></script>
 
 ```
 
 Create a new instance in `app.js`.
 
-```JavaScript
-
- var s2r = document.querySelector('.slide2reveal'), // Any valid HTMLElement to used as the container
-        slide2reveal = new Slide2Reveal(s2r);
+```javascript
+/**
+ * Any valid HTMLElement to be used as the container
+ * A jQuery object is okay, too
+ * */
+var s2r = document.querySelector('.slide2reveal');
+/* Create a new instance */
+var slide2reveal = new Slide2Reveal(s2r);
 
 ```
 
 If you do not want the percentage symbol to be shown use:
 
-```JavaScript
+```javascript
 
 var slide2reveal = new Slide2Reveal(s2r, 0);
 
@@ -87,13 +91,13 @@ var slide2reveal = new Slide2Reveal(s2r, 0);
         </fieldset>
     </form><!-- End .s2r-controls -->
 </section> <!-- End .slide2reveal -->
-    <!-- *********************** END TEMPLATE: Slide2Reveal *************************** -->
+<!-- *********************** END TEMPLATE: Slide2Reveal *************************** -->
 
 ```
 
 #### CSS
 
-Feel free to edit the CSS to your liking. Be sure to check the comments in `css/slide2reveal.css`.
+Feel free to edit the CSS to your liking. Be sure to check the comments in `css/slide2reveal.css` for properties that are of importance.
 
 
 ### Known Issues
