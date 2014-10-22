@@ -100,16 +100,15 @@ var slide2reveal = new Slide2Reveal(s2r, 0);
 Feel free to edit the CSS to your liking. Be sure to check the comments in `css/slide2reveal.css` for properties that are of importance.
 
 
-### Known Issues
+## Known Issues
 
-If you discover any bugs (the math for centering the tooltip may likely be improved upon), feel free to create an issue on GitHub fork and
-send us a pull request.
+* Some aspects of the CSS need adjusting for proper rendering in Opera
+* Haven't looked into over-riding slider properties in IE.
+
+If you discover any bugs (the math for centering the tooltip may likely be improved upon), feel free to create an issue on GitHub, fork and
+send a pull request.
 
 [Issues List](https://github.com/seantunwin/slide2reveal/issues).
-
-## Authors
-
-* Sean T. Unwin (https://github.com/seantunwin)
 
 
 ## License
