@@ -116,7 +116,7 @@
 
     background-color: rgba(22, 22, 22, 0.75);
     font-size: 16px;
-    padding: 0 0 0.275em 0;
+    padding: 0;
     margin: 0 auto;
     border: 1px solid rgba(12, 12, 12, 0.8);
     border-top: 2px solid rgba(12, 12, 12, 0.8);
@@ -127,11 +127,11 @@
 
 @media only screen and (max-width : 320px) {
   .s2r-controls {
-    height: 40px; /* important */
+    height: 35px; /* important */
     /* push to the bottom of container
      * @100% = .container.height
-     * @40px = this.height*/
-    top: calc(100% - 40px); /* important */
+     * @35px = this.height*/
+    top: calc(100% - 35px); /* important */
   }
 }
 
@@ -152,19 +152,19 @@
  ***** Slider2Reveal::ToolTip *****
  **/
 .s2r-tooltip {
-    display: inline-block;
+    display: inline;
     position: relative;
     float: left;
-    margin-top: -1.5em;
-    padding: 0 0.15em 0 0.17em;
+    margin-top: -1.25em;
+    padding: 0 0.25em 0;
 
     min-width: 1em;
 
     text-align: center;
-    line-height: 1.2em;
+    line-height: 1.05em;
     font-family: monospace;
     font-size: 0.825em;
-    color: rgba(111, 111, 111, 0.8);
+    color: rgba(121, 121, 121, 0.8);
 
     text-shadow: 0.05em 0.05em 0 rgba(5, 5, 5, 1);
     box-shadow: 0 0.03em 0 0 rgba(5, 5, 5, 0.8);
@@ -182,7 +182,7 @@
 
     /* Place arrow at bottom center */
     top: 102%;
-    margin-left: -51%;
+    margin-left: -45%;
 
     border-top: 4px solid rgba(100, 100, 100, 0.7);
     border-right: 2px solid transparent;
@@ -195,18 +195,25 @@
  **/
 .s2r-slider {
     /*-webkit-appearance: none;*/
+    display: block;
     clear: both;
     position: relative;
     padding: 0;
     margin-left: 2%;
     width: 96%;
     height: 0.5em; min-height: 0.1em; max-height: 1em;
-    bottom: 0.35em;
+    bottom: -0.6em;
     border: 1px solid rgba(22, 22, 22, 0.8);
     border-radius: 4px;
     background-color: rgba(30, 30, 30, 0.7);
     box-shadow: inset 0 0 0.2em rgba(88, 88, 88, 0.9);
 }
+
+@media only screen and (max-width : 320px) {
+    .s2r-slider {
+      bottom: -0.3em;
+    }
+  }
 
 .s2r-slider:focus {
     outline-width: 1px;
@@ -278,20 +285,23 @@
  ***** Slider2Reveal::Controls Label *****
  **/
 .s2r-controls-label {
-    margin: 0 auto;
+    display: block;
+    margin: -0.1em 0 auto;
     padding: 0;
     border: 0px solid transparent;
     /* center the controls label's text */
     text-align: center;
+    font-size: 0.85em;
     /* remove bolding of heading */
     font-weight: 200;
+    letter-spacing: 0.075em;
 }
 
 .s2r-controls-label,
 .s2r-controls-label:before,
 .s2r-controls-label:after {
     color: rgba(5, 5, 5, 0.35);
-    text-shadow: 0.04em 0.04em 0 rgba(135, 135, 135, 0.25);
+    text-shadow: 0.04em 0.04em 0 rgba(135, 135, 135, 0.3);
 }
 
 .s2r-controls-label:before {
