@@ -5,6 +5,8 @@
 **Slide2Reveal**
 A UI Component for revealing an image using a slider with a custom tooltip.
 
+Example page: https://seantunwin.github.io/slide2reveal/
+
 
 This experiment was born from a desire to show an original image and then the edited version by using a slider to gradually show the difference between the two.
 Following that initial experimentation I thought it would be neat to have a tooltip showing the amount of progress which the slider had been moved.
