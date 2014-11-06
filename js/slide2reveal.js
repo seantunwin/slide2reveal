@@ -315,13 +315,14 @@
           // Keep tooltip stationary when tooltip position is less than start position
           if (subtotal < startpos) subtotal = startpos;
           // Keep tooltip stationary when tooltip position is greater than end position
-          if (subtotal > endpos) subtotal = endpos;
+          if (subtotal >= endpos) subtotal = endpos;
         }
       }
 
       total = subtotal;
 
       // Move the tooltip
+      s2r.tooltip.style.webkitTransform = 'translate3d(' + total + 'px, 0, 0)';
       s2r.tooltip.style.transform = 'translate3d(' + total + 'px, 0, 0)';
     } /* End moveTooltip */
 
